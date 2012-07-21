@@ -1,0 +1,18 @@
+#OS Specific
+.DS_Store
+
+#Editor Specific
+NERD_tree_*
+
+#File
+.bundle/*
+.bin/*
+Gemfile.lock
+.sass-cache
+/output/*
+/thoughts/*
+/tmp/*
+
+# vim
+*.swp
+*~

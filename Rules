@@ -1,0 +1,62 @@
+#!/usr/bin/env ruby
+
+# Compass requirements
+require 'compass'
+Compass.add_project_configuration('config.rb')
+
+# A few helpful tips about the Rules file:
+#
+# * The order of rules is important: for each item, only the first matching
+#   rule is applied.
+#
+# * Item identifiers start and end with a slash (e.g. “/about/” for the file
+#   “content/about.html”). To select all children, grandchildren, … of an
+#   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
+#   because “*” matches zero or more characters.
+
+compile '/(images)/*' do
+  # don't filter or layout
+end
+
+route '/(images)/*' do
+  path = item.identifier.chop + '.' + item[:extension]
+end
+
+compile '/stylz/*/' do
+  case item[:extension]
+  when 'sass'
+    filter :sass, Compass.sass_engine_options
+  when 'css'
+    #nothing
+  end
+end
+
+compile '/js/*' do
+  # Change this to mod your coffee files and write a corresponding route
+  # file
+end
+
+compile '*' do
+  case item[:extension]
+  when 'haml'
+    filter :haml
+  when 'mdown' || 'html'
+    filter :erb
+    filter :bluecloth
+  end
+  layout 'default' unless item[:layout] == 'none'
+end
+
+route '/stylz/*/' do
+  item.identifier.chop + '.css'
+end
+
+route '/js/*' do
+  item.identifier.chop + item[:extension]
+end
+
+route '*' do
+  item.identifier + 'index.html'
+end
+
+layout '*', :haml, :filter => :html5

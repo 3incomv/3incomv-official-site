@@ -120,6 +120,7 @@ aside section {
 .aside_section_02 {
 	border: 2px solid #eee;
 	margin-top: 40px;
+  margin-bottom: 30px;
 }
 .aside_section_banner {
 	margin-top: 40px;
@@ -210,3 +211,9 @@ footer {
     -moz-box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.50);
     -webkit-box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.50);
 }
+
+.aside_facebook {
+	margin-top: 40px;
+  background-color: #fefefe;
+}
+

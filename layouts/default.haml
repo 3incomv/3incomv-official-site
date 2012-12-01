@@ -28,7 +28,9 @@
           = yield
         %aside
           = render '_sidebar'
-      %script{type: 'text/javascript', src: 'https://www.messageleaf.jp/javascripts/messageleaf.js'}
+      %script{:src => "https://www.messageleaf.jp/embed.js"}
+      :javascript
+        new MSGLF({ titleBgColor: '#A7CB52', titleFontColor: '#FFFFFF', position: 'left' }).changeDesign();
       %footer
         %p
           Copyright &copy;2012 山陰コンピュータ部 All Rights Reserved.
